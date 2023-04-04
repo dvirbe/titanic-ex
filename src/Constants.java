@@ -7,6 +7,8 @@ public class Constants {
     public static final int Y_SPACE_FOR_NEW_ROW = 45;
     public static final int WINDOW_HEIGHT = 700;
     public static final String[] PASSENGER_CLASS_OPTIONS = { "All", "1st", "2nd", "3rd"};
+    public static final String[] SEX_OPTIONS = { "All", "Male", "Female"};
+    public static final String[] EMBARKED_OPTIONS = { "All", "C", "Q", "S"};
     public static final int MARGIN_FROM_TOP = 10;
     public static final int MARGIN_FROM_LEFT = 5;
     public static final int LABEL_WIDTH = 100;
