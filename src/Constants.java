@@ -11,7 +11,7 @@ public class Constants {
     public static final String[] EMBARKED_OPTIONS = { "All", "C", "Q", "S"};
     public static final int MARGIN_FROM_TOP = 10;
     public static final int MARGIN_FROM_LEFT = 5;
-    public static final int LABEL_WIDTH = 100;
+    public static final int LABEL_WIDTH = 110;
     public static final int LABEL_HEIGHT = 30;
     public static final int ANSWER_LABEL_WIDTH =250;
     public static final int TEXT_FIELD_WIDTH = 130;
