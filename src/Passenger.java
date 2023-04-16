@@ -20,7 +20,7 @@ public class Passenger {
         try {
             line = checker(line);
             this.passengerID = Integer.parseInt(line[0]);
-            this.survived = (Integer.valueOf(line[1]) == 1);
+            this.survived = (Integer.parseInt(line[1]) == 1);
             this.pClass = Integer.parseInt(line[2]);
             this.name = getFormattedName(line[3], line[4]);
             this.sex = line[5];
