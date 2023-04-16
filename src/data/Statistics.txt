@@ -1,0 +1,25 @@
+survivors by class:
+class 1 :  62.96%
+class 2 :  47.28%
+class 3 :  24.24%
+survivors by sex:
+Male :  18.89%
+Female :  74.2%
+survivors by age group :
+age group 0-10 :  59.38%
+age group 11-20 :  38.26%
+age group 21-30 :  36.68%
+age group 31-40 :  45.1%
+age group 41-50 :  39.29%
+age group 51+ :  34.38%
+survivors with family members:
+on his own :  30.35%
+with family members :  50.56%
+survivors by ticket cost:
+price group 0-10 :  19.94%
+price group 11-30 :  44.37%
+price group 31+ :  58.22%
+survivors by port embarked:
+C :  55.36%
+Q :  38.96%
+S :  33.7%
