@@ -1,4 +1,4 @@
-import javax.swing.*;;
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,9 +8,6 @@ class Titanic extends JFrame {
     public static void main(String[] args) {
         new Titanic();
         passengersList = (Passenger.createPassenger(FileHandler.readFile()));
-        FileHandler a = new FileHandler();
-        System.out.println(a.isFileExist());
-
 
     }
     public static List<Passenger> getPassengersList() {

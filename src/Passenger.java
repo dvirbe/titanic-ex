@@ -31,66 +31,22 @@ public class Passenger {
             this.fare = Float.valueOf(line[10]);
             this.cabin = line[11];
             this.embarked = line[12].charAt(0);
-            //  this.passengerList = new ArrayList<>();
-        } catch (Exception ignored) {
+
+        } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Something is not working");
         }
     }
 
-    public static int calculateSurvivedPercentageByClass(int pClass) {
-        int result = 0;
-        for (Passenger passenger : Titanic.getPassengersList()) {
-            if (passenger.searchByClass(passenger, pClass)) {
-                result++;
-            }
-        }
-        result = (result * 100) / Titanic.getPassengersList().size();
-        return result;
+    public Boolean getSurvived() {
+        return survived;
     }
-
-    public static int calculateSurvivedPercentageBySex(String sex) {
-        int result = 0;
-        for (Passenger passenger : Titanic.getPassengersList()) {
-            if (passenger.searchBySex(passenger, sex)) {
-                result++;
-            }
-        }
-        result = (result * 100) / Titanic.getPassengersList().size();
-        return result;
-    }
-
-    public static int calculateSurvivedPercentageByUserDefineAgeRange(float age, float maxAge, float minAge) {
-        int result = 0;
-        for (Passenger passenger : Titanic.getPassengersList()) {
-            if (passenger.searchByAge(passenger, age) && passenger.age >= minAge && passenger.age <= maxAge) {
-                result++;
-            }
-        }
-        result = (result * 100) / Titanic.getPassengersList().size();
-        return result;
-    }
-
 
     private String getFormattedName(String lastName, String firstName) {
         String[] temp = firstName.split("\\.");
-        return temp[1].substring(0, temp[1].length() - 1) + " " + lastName.trim().substring(1, lastName.length());
-    }
-
-    @Override
-    public String toString() {
-        return "{" + passengerID +
-                "," + survived +
-                ", " + pClass +
-                ", " + name +
-                ", " + sex +
-                ", " + age +
-                ", " + sibSp +
-                ", " + parch +
-                ", " + ticket +
-                ", " + fare +
-                ", " + cabin +
-                ", " + embarked +
-                "}\n";
+        firstName = temp[1];
+        temp = firstName.split("\"");
+        firstName = temp[0];
+        return firstName + " " + lastName.trim().substring(1);
     }
 
     private String[] checker(String[] data) {
@@ -102,10 +58,6 @@ public class Passenger {
         return data;
     }
 
-    private static boolean searchByAge(Passenger passenger, float age) {
-        return passenger.age == age;
-    }
-
     public static List<Passenger> createPassenger(List<String> passengers) {
         List<Passenger> passengerList = new ArrayList<>();
         for (String data : passengers) {
@@ -114,6 +66,30 @@ public class Passenger {
             passengerList.add(passenger);
         }
         return passengerList;
+    }
+
+    public float getAge() {
+        return age;
+    }
+
+    public int getPClass() {
+        return pClass;
+    }
+
+    public char getEmbarked() {
+        return embarked;
+    }
+
+    public int getSibSp() {
+        return sibSp;
+    }
+
+    public int getParch() {
+        return parch;
+    }
+
+    public float getFare() {
+        return fare;
     }
 
     public static boolean searchBySex(Passenger passenger, String sex) {
@@ -135,7 +111,7 @@ public class Passenger {
     }
 
     public static boolean searchByName(Passenger passenger, String nameToSearch) {
-        return (passenger.name.contains(nameToSearch) || nameToSearch.isEmpty());
+        return (nameToSearch.isEmpty() || passenger.name.contains(nameToSearch));
     }
 
     public static boolean searchBySibSp(Passenger passenger, String sibSpAmount) {
@@ -168,16 +144,12 @@ public class Passenger {
         return passenger.fare >= Integer.valueOf(minFare) && passenger.fare <= Integer.valueOf(maxFare);
     }
 
-    public static boolean searchByRangeOfCabin(Passenger passenger, String cabin) {
+    public static boolean searchByCabin(Passenger passenger, String cabin) {
         return passenger.cabin.contains(cabin);
     }
 
     public static boolean searchByEmbarking(Passenger passenger, char embarked) {
-        boolean result = false;
-        if (embarked == Constants.ALL_EMBARKED_BOX || passenger.embarked == Integer.valueOf(embarked)) {
-            result = true;
-        }
-        return result;
+        return embarked == Constants.ALL_EMBARKED_BOX || passenger.embarked == Integer.valueOf(embarked);
     }
 
     public static int survivedCounter(List<Passenger> passengerList) {
@@ -214,7 +186,7 @@ public class Passenger {
                             && searchByParch(passenger, parch)
                             && searchByTicket(passenger, ticket)
                             && searchByFareRange(passenger, minFare, maxFare)
-                            && searchByRangeOfCabin(passenger, cabin)
+                            && searchByCabin(passenger, cabin)
                             && searchByEmbarking(passenger, embarked)
                             && searchBySex(passenger, sex)
             ) {
@@ -224,7 +196,9 @@ public class Passenger {
         }
         return filteredPassengers;
     }
-    public String passengerToCsv(){
-        return passengerID+","+survived+","+pClass+","+name+","+sex+","+age+","+sibSp+","+parch+","+ticket+","+fare+","+cabin+","+embarked+"\n";
+
+    @Override
+    public String toString() {
+        return passengerID + "," + survived + "," + pClass + "," + name + "," + sex + "," + age + "," + sibSp + "," + parch + "," + ticket + "," + fare + "," + cabin + "," + embarked + "\n";
     }
 }
