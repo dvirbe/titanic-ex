@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Passenger {
-    //private static List<Passenger> passengerList;
+
     private int passengerID;
     private Boolean survived;
     private int pClass;

@@ -77,16 +77,12 @@ public class ManageScreen extends JPanel implements EventListener {
             this.passengerNumberMinField = new JTextField();
             this.passengerNumberMinField.setBounds(passengerNumberMinLabel.getX(), passengerNumberMinLabel.getY() + Constants.Y_SPACE_FROM_LABEL, Constants.TEXT_FIELD_WIDTH, Constants.TEXT_FIELD_HEIGHT);
             this.add(this.passengerNumberMinField);
-//            this.passengerNumberMinField.addActionListener(e -> {
-//                sendToSearch();
-//            });
+
 
             this.passengerNumberMaxField = new JTextField();
             this.passengerNumberMaxField.setBounds(passengerNumberMaxLabel.getX(), passengerNumberMaxLabel.getY() + Constants.Y_SPACE_FROM_LABEL, Constants.TEXT_FIELD_WIDTH, Constants.TEXT_FIELD_HEIGHT);
             this.add(this.passengerNumberMaxField);
-//            this.passengerNumberMaxField.addActionListener(e -> {
-//                sendToSearch();
-//            });
+
 
             JLabel sibSpLabel = new JLabel("sib number");
             sibSpLabel.setBounds(Constants.RELATIVE_WIDTH, passengerNumberMinField.getY() + Constants.Y_SPACE_FOR_NEW_ROW, Constants.LABEL_WIDTH, Constants.LABEL_HEIGHT);
@@ -115,6 +111,7 @@ public class ManageScreen extends JPanel implements EventListener {
             JLabel maxFareLabel = new JLabel(" fare max");
             maxFareLabel.setBounds(minFareLabel.getX() + Constants.X_SPACE_FROM_LABEL, parchField.getY() + Constants.Y_SPACE_FOR_NEW_ROW, Constants.LABEL_WIDTH, Constants.LABEL_HEIGHT);
             this.add(maxFareLabel);
+
 
             this.minFareField = new JTextField();
             this.minFareField.setBounds(minFareLabel.getX(), minFareLabel.getY() + Constants.Y_SPACE_FROM_LABEL, Constants.TEXT_FIELD_WIDTH, Constants.TEXT_FIELD_HEIGHT);
