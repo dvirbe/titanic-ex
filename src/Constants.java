@@ -1,7 +1,6 @@
 public class Constants {
     public static final String PATH_TO_DATA_FILE = "src/data/titanic.csv";
     public static final String PATH_TO_STATISTICS_FILE ="src/data/Statistics.txt";
-
     public static final int WINDOW_WIDTH = 600;
     public static final int RELATIVE_WIDTH = 100;
     public static final int X_SPACE_FROM_LABEL = 150;
@@ -23,11 +22,18 @@ public class Constants {
     public  static  final String ALL_SEX_BOX = "All";
     public  static  final char ALL_EMBARKED_BOX = 'A';
     public static final String UNKNOWN_DATA = "-1";
-
     public static final String[] SEX_STATISTICS_OPTIONS = {"Male", "Female"};
     public static final String[] AGE_GROUP_STATISTICS_OPTIONS ={"0-10","11-20","21-30","31-40","41-50","51-"+Integer.MAX_VALUE};
     public static final int[] CLASS_STATISTICS_OPTIONS = {1,2,3};
     public static final boolean[] FAMILY_STATISTICS_OPTIONS = {false,true};
     public static final char[] EMBARKED_STATISTICS_OPTIONS = {'C','Q' ,'S'};
     public static final String[] TICKET_COST_GROUP_STATISTICS_OPTIONS ={"0-10","11-30","31-"+Integer.MAX_VALUE};
+    public  static  final int ERROR_LABEL_WIDTH = 300;
+    public  static  final int ERROR_LABEL_HEIGHT  = 300;
+    public static final String SURVIVORS_BY_PORT = "survivors by port embarked:";
+    public static final String SURVIVORS_BY_TICKET_COST = "survivors by ticket cost:";
+    public static final String SURVIVORS_WITH_FAMILY = "survivors with family members:";
+    public static final String SURVIVOR_BY_AGE = "survivors by age group :";
+    public static final int FROM_AGE_PLUS = 51;
+    public static final int FROM_PRICE_PLUS = 31;
 }

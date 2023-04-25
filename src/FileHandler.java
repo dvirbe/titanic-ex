@@ -34,7 +34,7 @@ public class FileHandler {
     }
 
     public static void createFile(List<Passenger> passengerList) {
-        int index = isFileExist();
+        int index = isIndexExist();
         try {
             File file = new File("src/data/" + index + ".csv");
             file.createNewFile();
@@ -60,7 +60,7 @@ public class FileHandler {
         }
     }
 
-    public static int isFileExist() {
+    private static int isIndexExist() {
         int index = 1;
         File file = new File("src/data/" + index + ".csv");
         while (file.exists()) {

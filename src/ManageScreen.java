@@ -1,35 +1,23 @@
 import javax.swing.*;
+import java.awt.*;
 import java.io.File;
 import java.util.EventListener;
 import java.util.List;
 
 public class ManageScreen extends JPanel implements EventListener {
     private JComboBox<String> classComboBox;
-
     private JComboBox<String> sexComboBox;
-
     private JComboBox<String> embarkedComboBox;
-
-
     private JTextField passengerNumberMinField;
-
     private JTextField passengerNumberMaxField;
-
     private JTextField sibSpField;
-
     private JTextField parchField;
-
     private JTextField maxFareField;
-
     private JTextField minFareField;
-
     private JTextField nameField;
-
     private JTextField cabinField;
-
     private JTextField ticketNumberField;
     private JLabel showAnswerLabel;
-
 
     public ManageScreen(int x, int y, int width, int height) {
         File file = new File(Constants.PATH_TO_DATA_FILE); //this is the path to the data file
@@ -168,8 +156,13 @@ public class ManageScreen extends JPanel implements EventListener {
             this.showAnswerLabel = new JLabel("");
             this.showAnswerLabel.setBounds((Constants.WINDOW_WIDTH - Constants.ANSWER_LABEL_WIDTH) / 2, statisticsButton.getY() + Constants.Y_SPACE_FOR_NEW_ROW, Constants.ANSWER_LABEL_WIDTH, Constants.LABEL_HEIGHT);
             this.add(this.showAnswerLabel);
-
-
+        }else {
+            this.setLayout(null);
+            this.setBounds(x, y + Constants.MARGIN_FROM_TOP, width, height);
+            JLabel errorLabel = new JLabel("could not find CSV File");
+            errorLabel.setFont(new Font("Ariel ",Font.BOLD,25));
+            errorLabel.setBounds((this.getWidth()-Constants.ERROR_LABEL_WIDTH)/2, (this.getHeight()  - Constants.ERROR_LABEL_HEIGHT)/2 ,Constants.ERROR_LABEL_WIDTH,Constants.ERROR_LABEL_HEIGHT);
+            this.add(errorLabel);
         }
     }
 
@@ -202,8 +195,6 @@ public class ManageScreen extends JPanel implements EventListener {
         } catch (NumberFormatException e) {
             changeAnswerLabelText("please enter a valid input!");
         }
-
-
     }
 
 }

@@ -40,7 +40,7 @@ public class Statistics {
         statisticsList.add(SURVIVORS_BY_TICKET_COST);
         for (String prices : Constants.TICKET_COST_GROUP_STATISTICS_OPTIONS) {
             String[] ages = (prices.split("-"));
-            if (Integer.parseInt(ages[1]) > FROM_PRICE_PLUS) {
+            if (Integer.parseInt(ages[1]) > Constants.FROM_PRICE_PLUS) {
                 statisticsList.add("price group " + ages[0] + "+ :  " + ticketCostCounter(Integer.parseInt(ages[0]), Integer.parseInt(ages[1])) + "%");
             } else {
                 statisticsList.add("price group " + ages[0] + "-" + ages[1] + " :  " + ticketCostCounter(Integer.parseInt(ages[0]), Integer.parseInt(ages[1])) + "%");
@@ -65,7 +65,7 @@ public class Statistics {
         statisticsList.add(SURVIVOR_BY_AGE);
         for (String age : Constants.AGE_GROUP_STATISTICS_OPTIONS) {
             String[] ages = (age.split("-"));
-            if (Float.valueOf(ages[1]) > FROM_AGE_PLUS) {
+            if (Float.valueOf(ages[1]) > Constants.FROM_AGE_PLUS) {
                 statisticsList.add("age group " + ages[0] + "+ :  " + ageRangeCounter(Float.valueOf(ages[0]), Float.valueOf(ages[1])) + "%");
             } else {
                 statisticsList.add("age group " + ages[0] + "-" + ages[1] + " :  " + ageRangeCounter(Float.valueOf(ages[0]), Float.valueOf(ages[1])) + "%");
@@ -79,7 +79,7 @@ public class Statistics {
             statisticsList.add(sex + " :  " + sexCounter(sex) + "%");
         }
     }
-    public static float sexCounter(String sex) {
+    private static float sexCounter(String sex) {
         int totalCount = 0;
         int survivorsCount = 0;
         for (Passenger passenger : Titanic.getPassengersList()) {
@@ -100,7 +100,7 @@ public class Statistics {
         }
     }
 
-    public static float ageRangeCounter(float minAge, float maxAge) {
+    private static float ageRangeCounter(float minAge, float maxAge) {
         int totalCount = 0;
         int survivorsCount = 0;
         for (Passenger passenger : Titanic.getPassengersList()) {
@@ -114,7 +114,7 @@ public class Statistics {
         return calculateSurvivorsPercents(totalCount, survivorsCount);
     }
 
-    public static float classCounter(int pClass) {
+    private static float classCounter(int pClass) {
         int totalCount = 0;
         int survivorsCount = 0;
         for (Passenger passenger : Titanic.getPassengersList()) {
@@ -127,7 +127,7 @@ public class Statistics {
         }
         return calculateSurvivorsPercents(totalCount, survivorsCount);
     }
-    public static float familyCounter(boolean familyMember) {
+    private static float familyCounter(boolean familyMember) {
         int totalCount = 0;
         int survivorsCount = 0;
         for (Passenger passenger : Titanic.getPassengersList()) {
@@ -142,7 +142,7 @@ public class Statistics {
         return calculateSurvivorsPercents(totalCount, survivorsCount);
     }
 
-    public static float ticketCostCounter(int minFare, int maxFare) {
+    private static float ticketCostCounter(int minFare, int maxFare) {
         int totalCount = 0;
         int survivorsCount = 0;
         for (Passenger passenger : Titanic.getPassengersList()) {
@@ -156,7 +156,7 @@ public class Statistics {
         return calculateSurvivorsPercents(totalCount, survivorsCount);
     }
 
-    public static float portEmbarkingCounter(char embarked) {
+    private static float portEmbarkingCounter(char embarked) {
         int totalCount = 0;
         int survivorsCount = 0;
         for (Passenger passenger : Titanic.getPassengersList()) {

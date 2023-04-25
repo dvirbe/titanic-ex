@@ -18,7 +18,7 @@ public class Passenger {
 
     public Passenger(String[] line) {
         try {
-            line = checker(line);
+            line = checkData(line);
             this.passengerID = Integer.parseInt(line[0]);
             this.survived = (Integer.parseInt(line[1]) == 1);
             this.pClass = Integer.parseInt(line[2]);
@@ -34,6 +34,9 @@ public class Passenger {
 
         } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Something is not working");
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            System.out.println("Invalid data");
         }
     }
 
@@ -41,15 +44,7 @@ public class Passenger {
         return survived;
     }
 
-    private String getFormattedName(String lastName, String firstName) {
-        String[] temp = firstName.split("\\.");
-        firstName = temp[1];
-        temp = firstName.split("\"");
-        firstName = temp[0];
-        return firstName + " " + lastName.trim().substring(1);
-    }
-
-    private String[] checker(String[] data) {
+    private String[] checkData(String[] data) {
         for (int i = 0; i < data.length; i++) {
             if (data[i].isEmpty() || data[i].isBlank()) {
                 data[i] = Constants.UNKNOWN_DATA;
@@ -61,23 +56,18 @@ public class Passenger {
     public static List<Passenger> createPassenger(List<String> passengers) {
         List<Passenger> passengerList = new ArrayList<>();
         for (String data : passengers) {
-            data = data + " ";
-            Passenger passenger = new Passenger(data.split(","));
-            passengerList.add(passenger);
+            try {
+                data = data + " ";
+                Passenger passenger = new Passenger(data.split(","));
+                passengerList.add(passenger);
+            } catch (NullPointerException e) {
+            }
         }
         return passengerList;
     }
 
-    public float getAge() {
-        return age;
-    }
-
-    public int getPClass() {
-        return pClass;
-    }
-
-    public char getEmbarked() {
-        return embarked;
+    public boolean getSurvived() {
+        return this.survived;
     }
 
     public int getSibSp() {
@@ -86,10 +76,6 @@ public class Passenger {
 
     public int getParch() {
         return parch;
-    }
-
-    public float getFare() {
-        return fare;
     }
 
     public static boolean searchBySex(Passenger passenger, String sex) {
@@ -131,7 +117,11 @@ public class Passenger {
     }
 
     public static boolean searchByTicket(Passenger passenger, String ticket) {
-        return passenger.ticket.contains(ticket);
+        boolean result = false;
+        if (passenger.ticket != null) {
+            result = passenger.ticket.contains(ticket);
+        }
+        return result;
     }
 
     public static boolean searchByFareRange(Passenger passenger, String minFare, String maxFare) {

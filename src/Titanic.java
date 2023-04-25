@@ -8,7 +8,6 @@ class Titanic extends JFrame {
     public static void main(String[] args) {
         new Titanic();
         passengersList = (Passenger.createPassenger(FileHandler.readFile()));
-
     }
     public static List<Passenger> getPassengersList() {
         return passengersList;
@@ -21,6 +20,4 @@ class Titanic extends JFrame {
         this.add(new ManageScreen(0, 0, Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT));
         this.setVisible(true);
     }
-
-
 }
