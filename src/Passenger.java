@@ -2,7 +2,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Passenger {
-
     private int passengerID;
     private boolean survived;
     private int pClass;
@@ -106,7 +105,11 @@ public class Passenger {
     }
 
     public static boolean searchByName(Passenger passenger, String nameToSearch) {
-        return (nameToSearch.isEmpty() || passenger.name.contains(nameToSearch));
+        try {
+            return (nameToSearch.isEmpty() || passenger.name.contains(nameToSearch));
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static boolean searchBySibSp(Passenger passenger, String sibSpAmount) {
@@ -173,8 +176,7 @@ public class Passenger {
             String minFare,
             String maxFare,
             String cabin,
-            String sex
-    ) {
+            String sex) {
         List<Passenger> filteredPassengers = new ArrayList<>();
         for (Passenger passenger : Titanic.getPassengersList()) {
             if (
