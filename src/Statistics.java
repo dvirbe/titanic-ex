@@ -2,12 +2,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Statistics {
-    private static final String SURVIVORS_BY_PORT = "survivors by port embarked:";
-    private static final String SURVIVORS_BY_TICKET_COST = "survivors by ticket cost:";
-    private static final String SURVIVORS_WITH_FAMILY = "survivors with family members:";
-    private static final String SURVIVOR_BY_AGE = "survivors by age group :";
-    private static final int FROM_AGE_PLUS = 51;
-    private static final int FROM_PRICE_PLUS = 31;
 
     public static void makeStatistics() {
         List<String> statisticsList = new ArrayList<>();
@@ -30,14 +24,14 @@ public class Statistics {
         }
     }
     private static void statisticsOfPortEmbarked(List<String> statisticsList) {
-        statisticsList.add(SURVIVORS_BY_PORT);
+        statisticsList.add(Constants.SURVIVORS_BY_PORT);
         for (char port : Constants.EMBARKED_STATISTICS_OPTIONS) {
             statisticsList.add(port + " :  " + portEmbarkingCounter(port) + "%");
         }
     }
 
     private static void statisticsOfTicketCost(List<String> statisticsList) {
-        statisticsList.add(SURVIVORS_BY_TICKET_COST);
+        statisticsList.add(Constants.SURVIVORS_BY_TICKET_COST);
         for (String prices : Constants.TICKET_COST_GROUP_STATISTICS_OPTIONS) {
             String[] ages = (prices.split("-"));
             if (Integer.parseInt(ages[1]) > Constants.FROM_PRICE_PLUS) {
@@ -49,7 +43,7 @@ public class Statistics {
     }
 
     private static void statisticsOfFamilyMembers(List<String> statisticsList) {
-        statisticsList.add(SURVIVORS_WITH_FAMILY);
+        statisticsList.add(Constants.SURVIVORS_WITH_FAMILY);
         for (boolean withFamily : Constants.FAMILY_STATISTICS_OPTIONS) {
             String temp;
             if (withFamily) {
@@ -62,7 +56,7 @@ public class Statistics {
     }
 
     private static void statisticsOfAgeGroup(List<String> statisticsList) {
-        statisticsList.add(SURVIVOR_BY_AGE);
+        statisticsList.add(Constants.SURVIVOR_BY_AGE);
         for (String age : Constants.AGE_GROUP_STATISTICS_OPTIONS) {
             String[] ages = (age.split("-"));
             if (Float.valueOf(ages[1]) > Constants.FROM_AGE_PLUS) {

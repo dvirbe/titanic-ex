@@ -1,10 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
-import java.util.EventListener;
 import java.util.List;
 
-public class ManageScreen extends JPanel implements EventListener {
+public class ManageScreen extends JPanel {
     private JComboBox<String> classComboBox;
     private JComboBox<String> sexComboBox;
     private JComboBox<String> embarkedComboBox;
