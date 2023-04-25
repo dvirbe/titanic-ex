@@ -70,6 +70,7 @@ public class Passenger {
         return this.survived;
     }
 
+
     public int getSibSp() {
         return sibSp;
     }
