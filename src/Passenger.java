@@ -4,7 +4,7 @@ import java.util.List;
 public class Passenger {
 
     private int passengerID;
-    private Boolean survived;
+    private boolean survived;
     private int pClass;
     private String name;
     private String sex;
@@ -40,8 +40,12 @@ public class Passenger {
         }
     }
 
-    public Boolean getSurvived() {
-        return survived;
+    private String getFormattedName(String lastName, String firstName) {
+        String[] temp = firstName.split("\\.");
+        firstName = temp[1];
+        temp = firstName.split("\"");
+        firstName = temp[0];
+        return firstName + " " + lastName.trim().substring(1);
     }
 
     private String[] checkData(String[] data) {
@@ -73,6 +77,10 @@ public class Passenger {
 
     public int getSibSp() {
         return sibSp;
+    }
+
+    public float getAge() {
+        return age;
     }
 
     public int getParch() {
